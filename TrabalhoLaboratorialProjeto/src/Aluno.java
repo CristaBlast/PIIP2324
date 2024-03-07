@@ -1,17 +1,16 @@
 import java.util.LinkedList;
 
-public class Professor {
-
+public class Aluno {
     private String nome;
     private long numero;
     private LinkedList<Aula> Aulas;
 
-    public void PreencherSumario(Aula aula)
+    public void Adicionar(Aula aula)
     {
 
     }
 
-    public void Adicionar(Aula aula)
+    public void PreencherSumario(Aula aula)
     {
 
     }
