@@ -4,14 +4,20 @@ public class Professor {
 
     private String nome;
     private long numero;
-    private LinkedList<Aula> Aulas;
+    private LinkedList<Aula> aulas;
 
-    public void PreencherSumario(Aula aula)
+    public Professor(String nome, long numero) {
+        this.nome = nome;
+        this.numero = numero;
+        aulas = new LinkedList<>();
+    }
+
+    public void preencherSumario(Aula aula)
     {
 
     }
 
-    public void Adicionar(Aula aula)
+    public void adicionar(Aula aula)
     {
 
     }

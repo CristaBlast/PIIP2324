@@ -7,18 +7,26 @@ public class Aula {
     private Professor professor;
     private LinkedList<Aluno> aluno;
 
-    public void Atribuir(Professor professor)
+    public Aula(String nome, long numero) {
+        this.nome = nome;
+        this.numero = numero;
+        sumario="";
+        professor=null;
+        aluno = new LinkedList<>();
+    }
+
+    public void atribuir(Professor professor)
     {
 
     }
 
-    public void Adicionar(Aluno aluno)
+    public void adicionar(Aluno aluno)
     {
 
     }
 
-    public void AdicionarLinhaSumario(String linha)
+    public void adicionarLinhaSumario(String linha)
     {
-        
+
     }
 }
