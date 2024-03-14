@@ -1,3 +1,7 @@
+/*import modelo.Aluno;
+import modelo.Aula;
+import modelo.Professor;
+
 public class main {
     public static void main(String[] args) {
         Professor professor1=new Professor("Marquinhos",1);
@@ -8,3 +12,4 @@ public class main {
         Aluno aluno2=new Aluno("Anabásio",663);
     }
 }
+*/
