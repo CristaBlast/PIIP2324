@@ -54,4 +54,15 @@ public class Aluno {
         }
         aula.adicionarLinhaSumario(nome);
     }
+
+    public LinkedList<Aula> getAulas(Horario horario) { //TODO
+        for (Aula aula : aulas) {
+            if(horario.getHoraInicio()+ horario.duracao < aula.horario.horaInicio && horario.getHoraInicio()<aula.horario.horaInicio+aula.horario.duracao)
+            {
+                return aulas;
+            }
+        }
+        return null;
+
+    }
 }

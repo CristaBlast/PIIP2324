@@ -60,4 +60,12 @@ public class Professor {
         aulas.remove(aula);
         aula.desassociarProfessor();
     }
+
+    public LinkedList<Aula> getAulas(Horario horario) {
+        for (Aula aula : aulas) {
+            if (aula.isSobre(horario))
+
+        }
+        return null;
+    }
 }

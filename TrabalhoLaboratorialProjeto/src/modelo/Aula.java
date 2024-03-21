@@ -9,18 +9,20 @@ public class Aula {
     private Professor professor;
     private LinkedList<Aluno> alunos;
 
-    public Aula(String nome, long numero) {
-        this.nome = nome;
-        this.numero = numero;
-        sumario=new StringBuilder();
-        this.professor=null;
-        alunos = new LinkedList<>();
+    private Horario horario;
+
+    public Aula(String nome, long numero,Horario horario) {
+        this(nome, numero,horario,null,new LinkedList<>());
     }
 
-    public Aula(String nome, long numero, Professor professor, LinkedList<Aluno> aluno) {
-        this(nome, numero);
-        this.professor = professor;
+    public Aula(String nome, long numero, Horario horario ,Professor professor, LinkedList<Aluno> alunos) {
+        this.setProfessor(professor);
+        sumario=new StringBuilder();
         this.alunos = new LinkedList<>();
+        this.horario = horario;
+        for (Aluno aluno : alunos) {
+            adicionar(aluno);
+        }
     }
 
     public String getNome() {
@@ -91,4 +93,7 @@ public class Aula {
     }
 
 
+    public boolean isSobre(Horario horario) {
+        return false;
+    }
 }
