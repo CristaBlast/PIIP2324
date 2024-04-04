@@ -2,32 +2,18 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Aluno {
-    private String nome;
-    private long numero;
+public class Aluno extends Identificador{
     private LinkedList<Aula> aulas;
 
     public Aluno(String nome, long numero) {
-        this.nome = nome;
-        this.numero = numero;
+        super(nome, numero);
         aulas = new LinkedList<>();
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public long getNumero() {
-        return numero;
     }
 
     public LinkedList<Aula> getAulas() {
         return new LinkedList<>(aulas);
     }
 
-    public void setNumero(long numero) {
-        this.numero = numero;
-    }
 
     public void adicionar(Aula aula)
     {
@@ -49,20 +35,21 @@ public class Aluno {
 
     public void preencherSumario(Aula aula)
     {
-        if (aula == null || !getAulas().contains(aula)) {
+        if (aula == null || !aulas.contains(aula)) {
             return;
         }
-        aula.adicionarLinhaSumario(nome);
+        aula.adicionarLinhaSumario(getNome());//TODO
     }
 
-    public LinkedList<Aula> getAulas(Horario horario) { //TODO
+    public LinkedList<Aula> getAulas(Horario horario) {
+        LinkedList<Aula> aulasADevolver = new LinkedList<>(); //sublist
         for (Aula aula : aulas) {
-            if(horario.getHoraInicio()+ horario.duracao < aula.horario.horaInicio && horario.getHoraInicio()<aula.horario.horaInicio+aula.horario.duracao)
+            if (aula.getHorario().isSobre(horario))
             {
-                return aulas;
+                aulasADevolver.add(aula);
             }
         }
-        return null;
+        return aulasADevolver;
 
     }
 }

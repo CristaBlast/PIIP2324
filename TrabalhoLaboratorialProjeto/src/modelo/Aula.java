@@ -2,9 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Aula {
-    private String nome;
-    private long numero;
+public class Aula  extends Identificador{
     private StringBuilder sumario;
     private Professor professor;
     private LinkedList<Aluno> alunos;
@@ -16,6 +14,7 @@ public class Aula {
     }
 
     public Aula(String nome, long numero, Horario horario ,Professor professor, LinkedList<Aluno> alunos) {
+        super(nome, numero);
         this.setProfessor(professor);
         sumario=new StringBuilder();
         this.alunos = new LinkedList<>();
@@ -23,14 +22,6 @@ public class Aula {
         for (Aluno aluno : alunos) {
             adicionar(aluno);
         }
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public long getNumero() {
-        return numero;
     }
 
     public String getSumario() {
@@ -65,8 +56,8 @@ public class Aula {
 
     }
 
-    public void setNumero(long numero) {
-        this.numero = numero;
+    public Horario getHorario() {
+        return horario;
     }
 
     public void adicionar(Aluno aluno)
@@ -93,7 +84,5 @@ public class Aula {
     }
 
 
-    public boolean isSobre(Horario horario) {
-        return false;
-    }
+
 }

@@ -22,4 +22,10 @@ public class Horario {
     public int getDuracao() {
         return duracao;
     }
+
+    public boolean isSobre(Horario horario) {
+        //verificar a intersseçãpo de this com horario
+        return !(diaSemana==horario.diaSemana||horaInicio+duracao<=horario.horaInicio || horaInicio>=horario.horaInicio+horario.duracao);
+
+    }
 }
