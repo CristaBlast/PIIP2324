@@ -1,6 +1,6 @@
 package modelo;
 
-public class Identificador {
+public abstract class Identificador {
     private String nome;
     private long numero;
 

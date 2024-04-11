@@ -2,24 +2,17 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Professor extends Identificador{
+public class Professor extends Pessoa{
 
     private LinkedList<Aula> aulas;
+    private GabineteProfessor gabineteProfessor;
+    private Horario horarioAtendimento;
 
     public Professor(String nome, long numero) {
         super(nome, numero);
-        aulas = new LinkedList<>();
     }
 
-    public LinkedList<Aula> getAulas() {
-        return new LinkedList<>(aulas);
-    }
-
-    public void preencherSumario(Aula aula)
-    {
-        if (aula == null || !aulas.contains(aula)) {
-            return;
-        }
+    protected void escreverSumario(Aula aula) {
         aula.adicionarLinhaSumario(aula.getNome());
         aula.adicionarLinhaSumario(String.valueOf(aula.getNumero()));
         aula.adicionarLinhaSumario(getNome());
@@ -28,32 +21,21 @@ public class Professor extends Identificador{
         }
     }
 
-    public void adicionar(Aula aula)
-    {
-        if (aula==null || aulas.contains(aula)) {
-            return;
-        }
-        aulas.add(aula);
+    protected void associar(Aula aula) {
         aula.setProfessor(this);
     }
 
-    public void remover(Aula aula)
-    {
-        if (aula == null || !aulas.contains(aula)) {
-            return;
-        }
-        aulas.remove(aula);
+    protected void desassociar(Aula aula) {
         aula.desassociarProfessor();
     }
 
-    public LinkedList<Aula> getAulas(Horario horario) {
-        LinkedList<Aula> aulasADevolver = new LinkedList<>(); //sublist
-        for (Aula aula : aulas) {
-                if (aula.getHorario().isSobre(horario))
-                {
-                    aulasADevolver.add(aula);
-                }
-            }
-        return aulasADevolver;
+    public void abrirGabinete() {
+    }
+
+    public void fecharGabinete() {
+    }
+
+    public GabineteProfessor getGabinete() {
+        return gabineteProfessor;
     }
 }
