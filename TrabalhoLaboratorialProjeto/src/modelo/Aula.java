@@ -11,12 +11,12 @@ public class Aula  extends Identificador{
 
     private Horario horario;
 
-    public Aula(String nome, long numero,Horario horario) {
-        this(nome, numero,horario,null,new LinkedList<>(),new Sala());
+    public Aula(String nome, long numero,Horario horario,Sala sala) {
+        this(nome, numero,horario,sala,null,new LinkedList<>());
     }
 
 
-    public Aula(String nome, long numero, Horario horario , Professor professor, LinkedList<Aluno> alunos, Sala sala) {
+    public Aula(String nome, long numero, Horario horario , Sala sala,Professor professor, LinkedList<Aluno> alunos) {
         super(nome, numero);
         this.setProfessor(professor);
         sumario=new StringBuilder();
@@ -100,7 +100,7 @@ public class Aula  extends Identificador{
     }
 
 
-    public void setAula(Sala sala) {
+    public void associarAula(Sala sala) {
         if (sala == null || this.sala==sala) {
             return;
         }

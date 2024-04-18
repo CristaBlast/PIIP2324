@@ -2,43 +2,32 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class GabineteProfessor {
-    private String nome;
+public class GabineteProfessor extends Divisao{
     private LinkedList<Professor> professores;
-    private boolean porta;
 
     public GabineteProfessor(String nome, boolean porta) {
-        this.nome = nome;
-        this.porta = porta;
-    }
-
-    public String getNome() {
-        return nome;
+        super(nome,porta);
+        this.professores = new LinkedList<>();
     }
 
     public LinkedList<Professor> getProfessores() {
-        return professores;
+        return new LinkedList<>(professores);
     }
 
-    public boolean isPorta() {
-        return porta;
+
+    public void adicionar(Professor professor) {
+        if (professor == null || professores.contains(professor)) {
+            return;
+        }
+        professores.add(professor);
+        professor.setGabinete(this);
     }
 
-    public boolean abrir() {
-        return porta=true;
-    }
-
-    public boolean fechar() {
-        return porta=false;
-    }
-
-    public void adicionar(Professor professor)
-    {
-
-    }
-
-    public void remover(Professor professor)
-    {
-
+    public void remover(Professor professor) {
+        if (professor == null || professores.contains(professor)) {
+            return;
+        }
+        professores.remove(professor);
+        professor.desassociarGabinete();
     }
 }

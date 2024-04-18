@@ -1,8 +1,6 @@
 package modelo;
 
-import java.util.LinkedList;
-
-public class Aluno extends Pessoa {
+public class Aluno extends PessoaComAulas {
 
     public Aluno(String nome, long numero) {
         super(nome, numero);

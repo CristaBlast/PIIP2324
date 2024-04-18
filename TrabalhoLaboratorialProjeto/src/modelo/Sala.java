@@ -2,35 +2,28 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Sala {
-    private String nome;
+public class Sala extends Divisao {
     private LinkedList<Aula>aulas;
-    private boolean porta;
 
 
     public Sala(String nome, boolean porta) {
-        this.nome = nome;
-        this.porta = porta;
-    }
-
-    public String getNome() {
-        return nome;
+        super(nome, porta);
+        aulas=new LinkedList<>();
     }
 
     public LinkedList<Aula> getAulas() {
-        return Aulas;
+        return aulas;
     }
 
     public LinkedList<Aula> getAulas(Horario horario) {
-        return Aulas;
-    }
-
-    public boolean abrir() {
-        return porta = true;
-    }
-
-    public boolean fechar() {
-        return porta;
+        LinkedList<Aula> aulasADevolver = new LinkedList<>(); //sublist
+        for (Aula aula : aulas) {
+            if (aula.getHorario().isSobre(horario))
+            {
+                aulasADevolver.add(aula);
+            }
+        }
+        return aulasADevolver;
     }
 
     public void adicionar(Aula aula)
@@ -39,7 +32,7 @@ public class Sala {
             return;
         }
         aulas.add(aula);
-        aula.setAula(this);
+        aula.associarAula(this);
     }
 
     public void remover(Aula aula)
