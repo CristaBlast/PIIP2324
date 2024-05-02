@@ -2,20 +2,24 @@ package modelo;
 
 import java.util.LinkedList;
 
-public abstract class PessoaComAulas extends Pessoa {
-    protected LinkedList<Aula> aulas;
+public abstract class PessoaComAulas extends Pessoa implements RepositorioDeAulas{
+    private GestorDeAulas gestorDeAulas;
 
     public PessoaComAulas(String nome, long numero) {
         super(nome, numero);
-        aulas = new LinkedList<>();
+        //TODO initialize gestor de aulas ??
     }
 
     public LinkedList<Aula> getAulas() {
-        return new LinkedList<>(aulas);
+        return gestorDeAulas.getAulas();
+    }
+
+    public LinkedList<Aula> getAulas(Horario horario) {
+        return gestorDeAulas.getAulas(horario);
     }
 
     public void preencherSumario(Aula aula) {
-        if (aula == null || !aulas.contains(aula)) {
+        if (aula == null || !gestorDeAulas.getAulas().contains(aula)) {
             return;
         }
         escreverSumario(aula);
@@ -23,36 +27,15 @@ public abstract class PessoaComAulas extends Pessoa {
 
     protected abstract void escreverSumario(Aula aula);
 
-    public void remover(Aula aula)
-    {
-        if (aula == null || !aulas.contains(aula)) {
-            return;
-        }
-        aulas.remove(aula);
-        desassociar(aula);
-    }
-
-    protected abstract void desassociar(Aula aula);
-
     public void adicionar(Aula aula)
     {
-        if (aula==null || aulas.contains(aula)) {
-            return;
-        }
-        aulas.add(aula);
-        associar(aula);
+        gestorDeAulas.adicionar(aula);
     }
 
-    protected abstract void associar(Aula aula);
-
-    public LinkedList<Aula> getAulas(Horario horario) {
-        LinkedList<Aula> aulasADevolver = new LinkedList<>(); //sublist
-        for (Aula aula : aulas) {
-            if (aula.getHorario().isSobre(horario))
-            {
-                aulasADevolver.add(aula);
-            }
-        }
-        return aulasADevolver;
+    public void remover(Aula aula)
+    {
+        gestorDeAulas.remover(aula);
     }
+
+
 }

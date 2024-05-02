@@ -2,16 +2,15 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Professor extends PessoaComAulas {
+public class Professor extends PessoaComAulas implements Funcionario{
 
-    private LinkedList<Aula> aulas;
     private GabineteProfessor gabinete;
-    private LinkedList<Horario> horariosAtendimento;
+    private GestorFuncionario gestorFuncionario;
 
     public Professor(String nome, long numero, GabineteProfessor gabinete) {
         super(nome, numero);
         this.gabinete = gabinete;
-        this.horariosAtendimento = new LinkedList<>();
+        gestorFuncionario = new GestorFuncionario();
     }
 
     protected void escreverSumario(Aula aula) {
@@ -23,11 +22,11 @@ public class Professor extends PessoaComAulas {
         }
     }
 
-    protected void associar(Aula aula) {
+    public void associar(Aula aula) {
         aula.setProfessor(this);
     }
 
-    protected void desassociar(Aula aula) {
+    public void desassociar(Aula aula) {
         aula.desassociarProfessor();
     }
 
@@ -52,14 +51,16 @@ public class Professor extends PessoaComAulas {
 
     }
 
+    @Override
     public void abrirGabinete() {
-        if (gabinete.isPorta()) {
+        if (gabinete == null || gabinete.isPorta()) {
             return;
         }
         gabinete.abrir();
 
     }
 
+    @Override
     public void fecharGabinete() {
         if (!gabinete.isPorta()) {
             return;
@@ -86,22 +87,19 @@ public class Professor extends PessoaComAulas {
         return gabinete;
     }
 
+    @Override
     public LinkedList<Horario> getHorarioAtendimento() {
-        return new LinkedList<>(horariosAtendimento);
+        return gestorFuncionario.getHorarioAtendimento();
     }
 
+    @Override
     public void adicionar(Horario horarioAtendimento) {
-        if (horarioAtendimento == null || horariosAtendimento.contains(horarioAtendimento)) {
-            return;
-        }
-        horariosAtendimento.add(horarioAtendimento);
+        gestorFuncionario.adicionar(horarioAtendimento);
     }
 
+    @Override
     public void remover(Horario horarioAtendimento) {
-        if (horarioAtendimento == null || !horariosAtendimento.contains(horarioAtendimento)) {
-            return;
-        }
-        horariosAtendimento.remove(horarioAtendimento);
+        gestorFuncionario.remover(horarioAtendimento);
     }
 
     public void setGabinete(GabineteProfessor gabinete) {

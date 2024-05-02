@@ -100,7 +100,7 @@ public class Aula  extends Identificador{
     }
 
 
-    public void associarAula(Sala sala) {
+    public void setSala(Sala sala) {
         if (sala == null || this.sala==sala) {
             return;
         }

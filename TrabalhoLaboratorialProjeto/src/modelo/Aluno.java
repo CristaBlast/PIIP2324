@@ -6,11 +6,11 @@ public class Aluno extends PessoaComAulas {
         super(nome, numero);
     }
 
-    protected void associar(Aula aula) {
+    public void associar(Aula aula) {
         aula.adicionar(this);
     }
 
-    protected void desassociar(Aula aula) {
+    public void desassociar(Aula aula) {
         aula.remover(this);
     }
 
