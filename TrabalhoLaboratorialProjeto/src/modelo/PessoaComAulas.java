@@ -7,7 +7,7 @@ public abstract class PessoaComAulas extends Pessoa implements RepositorioDeAula
 
     public PessoaComAulas(String nome, long numero) {
         super(nome, numero);
-        //TODO initialize gestor de aulas ??
+        gestorDeAulas = new GestorDeAulas(this);
     }
 
     public LinkedList<Aula> getAulas() {

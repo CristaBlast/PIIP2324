@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 
-public class Seguranca extends Pessoa implements Funcionario {
+public class Seguranca extends Pessoa implements Funcionario<GabineteSeguranca> {
     private GabineteSeguranca gabinete;
     private GestorFuncionario gestorFuncionario;
 
@@ -45,8 +45,7 @@ public class Seguranca extends Pessoa implements Funcionario {
         divisao.fechar();
     }
 
-
-    public GabineteSeguranca getGabinete() {
+    public Gabinete getGabinete() {
         return gabinete;
     }
 

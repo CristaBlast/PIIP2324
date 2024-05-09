@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class GestorFuncionario {
     private LinkedList<Horario> horariosAtendimento;
 
+
     public GestorFuncionario() {
         this.horariosAtendimento = new LinkedList<>();
     }

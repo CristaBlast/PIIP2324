@@ -5,10 +5,9 @@ import java.util.LinkedList;
 public class Sala extends Divisao implements  RepositorioDeAulas{
     private GestorDeAulas gestorDeAulas;
 
-
     public Sala(String nome, boolean porta) {
         super(nome, porta);
-        gestorDeAulas = new GestorDeAulas();
+        gestorDeAulas = new GestorDeAulas(this);
     }
 
     public LinkedList<Aula> getAulas() {

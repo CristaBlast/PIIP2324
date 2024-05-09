@@ -1,4 +1,4 @@
-//import modelo.*;
+//package modelo;
 //
 //import java.util.LinkedList;
 //
