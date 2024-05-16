@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.LinkedList;
 
-public interface Funcionario <TGabinete extends Gabinete<?>>{
+public interface Funcionario <TGabinete extends Gabinete,TDivisao extends Divisao>{
     void abrirGabinete();
 
     void fecharGabinete();
@@ -18,5 +18,9 @@ public interface Funcionario <TGabinete extends Gabinete<?>>{
     void setGabinete(TGabinete gabinete);
 
     Gabinete getGabinete();
+
+    void abrir(TDivisao divisao);
+
+    void fechar(TDivisao divisao);
 
 }
