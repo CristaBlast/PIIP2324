@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trabalho Laboratorial Android</string>
+    <string name="txtProfessor">Professor:</string>
+    <string name="txtAlunos">Alunos:</string>
+    <string name="txtAdicionarAluno">Adicionar Aluno</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtNumero">Número</string>
+    <string name="txtAdicionar">Adicionar</string>
+    <string name="txtErroNomeInvalido">Nome inválido</string>
+    <string name="txtErroNumeroInvalido">Número inválido</string>
+</resources>
